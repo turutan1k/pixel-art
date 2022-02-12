@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Podkova:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <title>Pixel Art | Сергей Ковалев</title>
+</head>
+
+<body>
+    <header class="header">
+        <h1>Pixel Art</h1>
+        <div class="login-container">
+            <div id="userPhoto" class="login-container__user-photo hide"></div>
+            <span id="userName" class="login-container__user-name hide">Сергей Ковалев</span>
+            <button id="loginButton" class="button">Войти</button>
+        </div>
+    </header>
+
+    <main class="main-index">
+        <div class="overview">
+            <div class="overview__wrapper">
+                <h2 class="overview__wrapper__headline">Pixel-Art.</br>Онлайн-редактор пиксельных изображений.</h2>
+                <h3 class="overview__wrapper__h3">Не знаете с чего начать?</br>Ознакомьтесь с функционалом приложения, наводя на синие квадратики.</h3>
+                <div class="overview__wrapper__frame overview-instruments">
+                    <ul class="overview-instruments__list overview-list">
+                        Используйте инструменты:
+                        <li>Карандаш</li>
+                        <li>Линия</li>
+                        <li>Заливка</li>
+                        <li>Пипетка</li>
+                        <li>Ластик</li>
+                    </ul>
+                    <p class="overview-instruments__description">... и 4 размера пера</p>
+                </div>
+                <div class="overview__wrapper__frame overview-colors">
+                    <ul class="overview-colors__list overview-list">
+                        Измените и покрасьте в два цвета:
+                        <li>ЛКМ - Основной цвет</li>
+                        <li>ПКМ - Вторичный цвет</li>
+                    </ul>
+                </div>
+                <div class="overview__wrapper__frame overview-key">
+                    <ul class="overview-key__list overview-list">
+                        Просмотр горячих клавиш инструментов:
+                        <li>Карандаша</li>
+                        <li>Линии</li>
+                        <li>Заливки</li>
+                        <li>Выбора цвета</li>
+                        <li>Ластика</li>
+                        <li>Толщины пера</li>
+                    </ul>
+                </div>
+                <div class="overview__wrapper__frame overview-sign">
+                    <ul class="overview-sign__list overview-list">
+                        <li>Авторизация</li>
+                    </ul>
+                </div>
+                <div class="overview__wrapper__frame overview-frames">
+                    <ul class="overview-frames__list overview-list">
+                        Возможности кадров:
+                        <li>Создать неограниченное количество</li>
+                        <li>Отобразить ВКЛ/ВЫКЛ</li>
+                        <li>Перетащить</li>
+                        <li>Удалить</li>
+                        <li>Копировать</li>
+                    </ul>
+                </div>
+                <div class="overview__wrapper__frame overview-fps">
+                    <ul class="overview-fps__list overview-list">
+                        Возможность предварительного просмотра:
+                        <li>Предварительный просмотр анимации</li>
+                        <li>От 0 кадров</li>
+                        <li>До 24 в секунду</li>
+                        <li>Полный экран</li>
+                    </ul>
+                </div>
+                <div class="overview__wrapper__frame overview-resolution">
+                    <ul class="overview-resolution__list overview-list">
+                        Поддерживаемые разрешения (px):
+                        <li>32x32</li>
+                        <li>64x64</li>
+                        <li>128x128</li>
+                        <li>256x256</li>
+                        <li>512x512</li>
+                        <li>1024x1024</li>
+                    </ul>
+                </div>
+                <div class="overview__wrapper__frame overview-export">
+                    <ul class="overview-export__list overview-list">
+                        Экспорт в:
+                        <li>.PNG</li>
+                        <li>.GIF</li>
+                    </ul>
+                </div>
+                <div class="overview__wrapper__frame overview-import">
+                    <ul class="overview-import__list overview-list">
+                        Импорт изображений с указанием:
+                        <li>Высоты</li>
+                        <li>Ширины</li>
+                    </ul>
+                </div>
+                <img src="./assets/test-animation.png" class="overview-animation">
+            </div>
+        </div>
+        <div class="get-started">
+            <p class="get-started__text">Нажмите на кнопку, чтобы создать собственную анимацию!</p>
+            <a class="button new-frame-button" href="./sprite.html">Перейти</a>
+        </div>
+    </main>
+    <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-auth.js"></script>
+    <script src="./script/login.js"></script>
+</body>
