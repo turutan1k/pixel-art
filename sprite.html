@@ -7,13 +7,13 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Podkova:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <title>Pixel Art | Создание нового спрайта</title>
+    <title>Pixel Art | Создание нового арта</title>
 </head>
 
 <body>
     
     <header class="header">
-        <h1>Pixel Art | Создание нового спрайта</h1>
+        <h1>Pixel Art | Создание нового арта</h1>
         <div class="login-container">
             <div id="userPhoto" class="login-container__user-photo hide"></div>
             <span id="userName" class="login-container__user-name hide"></span>
@@ -111,13 +111,13 @@
                 </li>
                 <div id="addNewFrame" class="add-new">
                     <div id="addNewFrame-+" class="add-new--icon">+</div>
-                    <div id="addNewFrame-a" class="add-new--text">Добавить новый кадр</div>
+                    <div id="addNewFrame-a" class="add-new--text">Добавить новый слой</div>
                 </div>
             </ul>
         </div>
 
         <div class="canvas-wrapper" onload="setupCanvas();">
-            <canvas id="canvas" class="canvas" width="500" height="500"></canvas>
+            <canvas id="canvas" class="canvas" width="1024" height="1024"></canvas>
         </div>
         
         <div class="tools">
@@ -127,12 +127,12 @@
             </div>
             <div class="settings">
                 <div class="settings__fps">
-                    <span id="fpsText" class="settings__fps__text">12 кадров</span>
+                    <span id="fpsText" class="settings__fps__text">12 fps</span>
                     <input id="slider" type="range" min="0" max="24" value="12" class="settings__fps__scroll">
                 </div>
                 <div class="settings__separator"></div>
                 <div class="settings__resolution">
-                    <button class="button collapsible">Выбрать разрешение</button>
+                    <button class="button collapsible">Разрешение холста</button>
                     <div class="content">
                         <div id="res32" class="settings__resolution__item">32x32</div>
                         <div id="res64" class="settings__resolution__item">64x64</div>
@@ -144,26 +144,26 @@
                 </div>
                 <div class="settings__separator"></div>
                 <div class="settings__export">
-                    <span class="description">Экспорт</span>
+                    <span class="description">Экспорт:</span>
                     <div class="settings__export__buttons">
                         <a href="" id="apngButton" class="button export-button">PNG</a>
-                        <a href="" id="gifButton" class="button export-button">GIF</a>
+                        <a href="" id="jpgButton" class="button export-button">JPG</a>
                     </div>
                 </div>
                 <div class="settings__separator"></div>
                 <div class="settings__import">
-                    <span class="description">Импорт</span>
+                    <span class="description">Импорт:</span>
                     <div class="settings__import__buttons">
                         <a class="button import-button">
                             <input type="file" onchange="previewImage(this);"></a>
 
                         <a class="import-button">
                             <label>Высота:</label>
-                            <input class="import-input" id="height" type="number">
+                            <input class="import-input" id="height" type="number"  min="32" max="1024" value="1024">
                         </a>
                         <a class="import-button">
                             <label>Ширина:</label>
-                            <input class="import-input" id="width" type="number">
+                            <input class="import-input" id="width" type="number" min="32" max="1024" value="1024">
                         </a>
                         <a class="button import-button" onclick="setImage();">Вставить</a>
                         </a>

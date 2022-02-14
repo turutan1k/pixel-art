@@ -8,6 +8,9 @@ const ctx = canvas.getContext('2d');
 let canvasBuffer;
 canvas.oncontextmenu = () => false;
 
+let heightvalue = document.getElementById('height');
+let widthvalue = document.getElementById('width');
+
 const bucket = document.getElementById('bucket');
 const chooseColor = document.getElementById('chooseColor');
 const pencil = document.getElementById('pencil');
@@ -53,29 +56,66 @@ penSize4.addEventListener('click', () => setPenSize(4));
 res32.addEventListener('click', () => {
   selectItem('settings__resolution', res32);
   setCanvasResolution(32);
+
+  heightvalue.value = 32;
+  widthvalue.value = 32;
+  heightvalue.min = 5;
+  widthvalue.min = 5;
+  heightvalue.max = 32;
+  widthvalue.max = 32;
 });
 res64.addEventListener('click', () => {
   selectItem('settings__resolution', res64);
   setCanvasResolution(64);
+  heightvalue.value = 64;
+  widthvalue.value = 64;
+  heightvalue.min = 32;
+  widthvalue.min = 32;
+  heightvalue.max = 64;
+  widthvalue.max = 64;
 });
 res128.addEventListener('click', () => {
   selectItem('settings__resolution', res128);
   setCanvasResolution(128);
+  heightvalue.value = 128;
+  widthvalue.value = 128;
+  heightvalue.min = 32;
+  widthvalue.min = 32;
+  heightvalue.max = 128;
+  widthvalue.max = 128;
 });
 
 res256.addEventListener('click', () => {
   selectItem('settings__resolution', res256);
   setCanvasResolution(256);
+  heightvalue.value = 256;
+  widthvalue.value = 256;
+  heightvalue.min = 32;
+  widthvalue.min = 32;
+  heightvalue.max = 256;
+  widthvalue.max = 256;
 });
 
 res512.addEventListener('click', () => {
   selectItem('settings__resolution', res512);
   setCanvasResolution(512);
+  heightvalue.value = 512;
+  widthvalue.value = 512;
+  heightvalue.min = 32;
+  widthvalue.min = 32;
+  heightvalue.max = 512;
+  widthvalue.max = 512;
 });
 
 res1024.addEventListener('click', () => {
   selectItem('settings__resolution', res1024);
   setCanvasResolution(1024);
+  heightvalue.value = 1024;
+  widthvalue.value = 1024;
+  heightvalue.min = 32;
+  widthvalue.min = 32;
+  heightvalue.max = 1024;
+  widthvalue.max = 1024;
 });
 
 
@@ -357,15 +397,15 @@ function localStorageLoad() {
       selectItem('settings__resolution', res64);;
       setCanvasResolution(64);
       break;
-      case '128,128':
+      case '128, 128':
         selectItem('settings__resolution', res128);;
         setCanvasResolution(128);
         break;
-        case '256,256':
+        case '256, 256':
         selectItem('settings__resolution', res256);;
         setCanvasResolution(256);
         break;
-        case '512,512':
+        case '512, 512':
         selectItem('settings__resolution', res512);;
         setCanvasResolution(512);
         break;

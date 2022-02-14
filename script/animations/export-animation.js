@@ -6,7 +6,7 @@ const animationCanvas = document.getElementById('animationCanvas');
 const ctx = animationCanvas.getContext('2d');
 
 const apngButton = document.getElementById('apngButton');
-const gifButton = document.getElementById('gifButton');
+const jpgButton = document.getElementById('jpgButton');
 
 window.encoder = new APNGencoder(animationCanvas);
 
@@ -44,6 +44,6 @@ apngButton.addEventListener('click', () => {
     downloadFile(apngButton, 'png')
 });
 
-gifButton.addEventListener('click', () => {
-    downloadFile(gifButton, 'gif')
+jpgButton.addEventListener('click', () => {
+    downloadFile(jpgButton, 'jpg')
 });
