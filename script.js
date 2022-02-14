@@ -187,7 +187,7 @@ function bucketCanvas(mouseButton) {
   } else if (mouseButton === 2) {
     ctx.fillStyle = secondaryColor;
   }
-  ctx.fillRect(0, 0, width * pixelSize, height * pixelSize);
+  ctx.fillRect(0, 0, width, height);
 }
 
 
