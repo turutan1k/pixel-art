@@ -53,6 +53,31 @@ penSize2.addEventListener('click', () => setPenSize(2));
 penSize3.addEventListener('click', () => setPenSize(3));
 penSize4.addEventListener('click', () => setPenSize(4));
 
+
+//change bgimg when res is ...
+let changebg = document.getElementById('canvas')
+
+function changeBgImg32(){
+    changebg.style.backgroundImage = "url('')";
+}
+function changeBgImg64(){
+  changebg.style.backgroundImage = "url('')";
+}
+function changeBgImg128(){
+  changebg.style.backgroundImage = "url('')";
+}
+function changeBgImg256(){
+  changebg.style.backgroundImage = "url('')";
+}
+function changeBgImg512(){
+  changebg.style.backgroundImage = "url('')";
+}
+function changeBgImg1024(){
+  changebg.style.backgroundImage = "url('')";
+}
+
+
+
 res32.addEventListener('click', () => {
   selectItem('settings__resolution', res32);
   setCanvasResolution(32);
@@ -63,6 +88,7 @@ res32.addEventListener('click', () => {
   widthvalue.min = 5;
   heightvalue.max = 32;
   widthvalue.max = 32;
+  changeBgImg32();
 });
 res64.addEventListener('click', () => {
   selectItem('settings__resolution', res64);
@@ -73,6 +99,7 @@ res64.addEventListener('click', () => {
   widthvalue.min = 32;
   heightvalue.max = 64;
   widthvalue.max = 64;
+  changeBgImg64();
 });
 res128.addEventListener('click', () => {
   selectItem('settings__resolution', res128);
@@ -83,6 +110,7 @@ res128.addEventListener('click', () => {
   widthvalue.min = 32;
   heightvalue.max = 128;
   widthvalue.max = 128;
+  changeBgImg128();
 });
 
 res256.addEventListener('click', () => {
@@ -94,6 +122,7 @@ res256.addEventListener('click', () => {
   widthvalue.min = 32;
   heightvalue.max = 256;
   widthvalue.max = 256;
+  changeBgImg256();
 });
 
 res512.addEventListener('click', () => {
@@ -105,6 +134,7 @@ res512.addEventListener('click', () => {
   widthvalue.min = 32;
   heightvalue.max = 512;
   widthvalue.max = 512;
+  changeBgImg512();
 });
 
 res1024.addEventListener('click', () => {
@@ -116,6 +146,7 @@ res1024.addEventListener('click', () => {
   widthvalue.min = 32;
   heightvalue.max = 1024;
   widthvalue.max = 1024;
+  changeBgImg1024();
 });
 
 
