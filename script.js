@@ -20,6 +20,8 @@ const penSize1 = document.getElementById('penSize1');
 const penSize2 = document.getElementById('penSize2');
 const penSize3 = document.getElementById('penSize3');
 const penSize4 = document.getElementById('penSize4');
+const penSize5 = document.getElementById('penSize5');
+const penSize6 = document.getElementById('penSize6');
 const penSizeCurrent = document.getElementById('penSizeCurrent');
 const primaryColorButton = document.getElementById('primaryColorButton');
 const secondaryColorButton = document.getElementById('secondaryColorButton');
@@ -30,14 +32,18 @@ const res128 = document.getElementById('res128');
 const res256 = document.getElementById('res256');
 const res512 = document.getElementById('res512');
 const res1024 = document.getElementById('res1024');
+let restore_array = [];
+let rindex = -1;
+let save_array = [];
+let sindex = -1;
 
 let primaryColor =  primaryColorButton.value;
 let secondaryColor = secondaryColorButton.value;
 let currentInstrument = 'pencil';
 
 // canvas size
-let width = 1024;
-let height = 1024;
+let width = 32;
+let height = 32;
 let pixelSize = 4;
 let penSize = 1;
 
@@ -48,32 +54,34 @@ line.addEventListener('click', () => selectItem('instrument-set', line));
 erase.addEventListener('click', () => selectItem('instrument-set', erase));
 bucket.addEventListener('click', () => selectItem('instrument-set', bucket));
 chooseColor.addEventListener('click', () => selectItem('instrument-set', chooseColor));
-penSize1.addEventListener('click', () => setPenSize(1));
-penSize2.addEventListener('click', () => setPenSize(2));
-penSize3.addEventListener('click', () => setPenSize(3));
-penSize4.addEventListener('click', () => setPenSize(4));
+penSize1.addEventListener('click', () => setPenSize(2));
+penSize2.addEventListener('click', () => setPenSize(4));
+penSize3.addEventListener('click', () => setPenSize(8));
+penSize4.addEventListener('click', () => setPenSize(16));
+penSize5.addEventListener('click', () => setPenSize(32));
+penSize6.addEventListener('click', () => setPenSize(64));
 
 
 //change bgimg when res is ...
 let changebg = document.getElementById('canvas')
 
 function changeBgImg32(){
-    changebg.style.backgroundImage = "url('')";
+    changebg.style.backgroundImage = "url('../assets/x32.jpg')";
 }
 function changeBgImg64(){
-  changebg.style.backgroundImage = "url('')";
+  changebg.style.backgroundImage = "url('../assets/x64.jpg')";
 }
 function changeBgImg128(){
-  changebg.style.backgroundImage = "url('')";
+  changebg.style.backgroundImage = "url('../assets/x128.jpg')";
 }
 function changeBgImg256(){
-  changebg.style.backgroundImage = "url('')";
+  changebg.style.backgroundImage = "url('../assets/x256.jpg')";
 }
 function changeBgImg512(){
-  changebg.style.backgroundImage = "url('')";
+  changebg.style.backgroundImage = "url('../assets/x512.jpg')";
 }
 function changeBgImg1024(){
-  changebg.style.backgroundImage = "url('')";
+  changebg.style.backgroundImage = "url('../assets/x1024.jpg')";
 }
 
 
@@ -106,8 +114,8 @@ res128.addEventListener('click', () => {
   setCanvasResolution(128);
   heightvalue.value = 128;
   widthvalue.value = 128;
-  heightvalue.min = 32;
-  widthvalue.min = 32;
+  heightvalue.min = 64;
+  widthvalue.min = 64;
   heightvalue.max = 128;
   widthvalue.max = 128;
   changeBgImg128();
@@ -118,8 +126,8 @@ res256.addEventListener('click', () => {
   setCanvasResolution(256);
   heightvalue.value = 256;
   widthvalue.value = 256;
-  heightvalue.min = 32;
-  widthvalue.min = 32;
+  heightvalue.min = 128;
+  widthvalue.min = 128;
   heightvalue.max = 256;
   widthvalue.max = 256;
   changeBgImg256();
@@ -130,8 +138,8 @@ res512.addEventListener('click', () => {
   setCanvasResolution(512);
   heightvalue.value = 512;
   widthvalue.value = 512;
-  heightvalue.min = 32;
-  widthvalue.min = 32;
+  heightvalue.min = 256;
+  widthvalue.min = 256;
   heightvalue.max = 512;
   widthvalue.max = 512;
   changeBgImg512();
@@ -142,8 +150,8 @@ res1024.addEventListener('click', () => {
   setCanvasResolution(1024);
   heightvalue.value = 1024;
   widthvalue.value = 1024;
-  heightvalue.min = 32;
-  widthvalue.min = 32;
+  heightvalue.min = 512;
+  widthvalue.min = 512;
   heightvalue.max = 1024;
   widthvalue.max = 1024;
   changeBgImg1024();
@@ -219,6 +227,12 @@ function bucketCanvas(mouseButton) {
     ctx.fillStyle = secondaryColor;
   }
   ctx.fillRect(0, 0, width, height);
+  if(event.type != 'mouseout'){
+    restore_array.push(ctx.getImageData(0,0,width,height));
+    save_array.push(ctx.getImageData(0,0,width,height));
+    rindex +=1;
+    sindex +=1;
+  }
 }
 
 
@@ -228,6 +242,13 @@ function eraseInstrument() {
   const row = Math.floor(mousePosition(event)[1] / pixelSize);
 
   ctx.clearRect(col, row, penSize, penSize);
+
+  if(event.type != 'mouseout'){
+    restore_array.push(ctx.getImageData(0,0,width,height));
+    save_array.push(ctx.getImageData(0,0,width,height));
+    rindex +=1;
+    sindex +=1;
+  } 
 }
 
 
@@ -239,6 +260,12 @@ function lineInstrument() {
   ctx.lineWidth = penSize;
   ctx.strokeStyle = primaryColor;
   ctx.stroke();
+  if ( event.type != 'mouseout'){
+    restore_array.push(ctx.getImageData(0,0,width,height));
+    save_array.push(ctx.getImageData(0,0,width,height));
+    rindex +=1;
+    sindex +=1;
+  }
 }
 
 
@@ -276,6 +303,13 @@ function pencilInstrument(mouseButton) {
     ctx.fillStyle = secondaryColor;
   }
   ctx.fillRect(col, row, penSize, penSize);
+  
+  if(event.type != 'mouseout'){
+    restore_array.push(ctx.getImageData(0,0,width,height));
+    save_array.push(ctx.getImageData(0,0,width,height));
+    rindex +=1;
+    sindex +=1;
+  }
 }
 
 // get mouse position
@@ -357,16 +391,22 @@ window.addEventListener('keydown', (event) => {
       selectItem('instrument-set', line);
       break;
     case 'Digit1':
-      setPenSize(1);
-      break;
-    case 'Digit2':
       setPenSize(2);
       break;
+    case 'Digit2':
+      setPenSize(4);
+      break;
     case 'Digit3':
-      setPenSize(3);
+      setPenSize(8);
       break;
     case 'Digit4':
-      setPenSize(4);
+      setPenSize(16);
+      break;
+    case 'Digit5':
+      setPenSize(32);
+      break;
+    case 'Digit6':
+      setPenSize(64);
       break;
   }
 });
@@ -420,10 +460,6 @@ function localStorageLoad() {
   }
 
   switch(localStorage.getItem('resolution')) {
-    case '32, 32':
-      selectItem('settings__resolution', res32);
-      setCanvasResolution(32);
-      break;
     case '64, 64':
       selectItem('settings__resolution', res64);;
       setCanvasResolution(64);
@@ -440,11 +476,52 @@ function localStorageLoad() {
         selectItem('settings__resolution', res512);;
         setCanvasResolution(512);
         break;
-    default:
+        case '1024, 1024':
       selectItem('settings__resolution', res1024);
       setCanvasResolution(1024);
+      break;
+    default:
+      selectItem('settings__resolution', res32);
+      setCanvasResolution(32);
   }
 }
+
+//clear
+const clear = document.getElementById('clear');
+
+function clear_canvas(){
+  ctx.clearRect(0, 0, width, height);
+
+  restore_array = [];
+  rindex = -1;
+}
+clear.addEventListener("click", clear_canvas);
+
+//undo last
+const undo = document.getElementById('undo');
+function undo_last(){
+  if(rindex <= 0){
+    clear_canvas();
+  } else{
+    rindex -=1;
+    restore_array.pop();
+    ctx.putImageData(restore_array[rindex],0,0)
+  }
+}
+undo.addEventListener("click", undo_last);
+
+//redo last
+const redo = document.getElementById('redo');
+function redo_last(){
+  if(sindex <= 0){
+    clear_canvas();
+  } else{
+    ctx.putImageData(save_array[sindex],0,0)
+  }
+}
+redo.addEventListener("click", redo_last);
+
+
 
 window.addEventListener('beforeunload', () => {
     localStorageSave();

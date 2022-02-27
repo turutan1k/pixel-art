@@ -61,6 +61,12 @@
                         <div id="penSize4" class="instrument-set__item__pen-size__element">
                             <div class="pen-size-4"></div>
                         </div>
+                        <div id="penSize5" class="instrument-set__item__pen-size__element">
+                            <div class="pen-size-5"></div>
+                        </div>
+                        <div id="penSize6" class="instrument-set__item__pen-size__element">
+                            <div class="pen-size-6"></div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -82,6 +88,8 @@
                         <p class="keyboard-shortcuts__list__text">Толщина 2px</p>
                         <p class="keyboard-shortcuts__list__text">Толщина 3px</p>
                         <p class="keyboard-shortcuts__list__text">Толщина 4px</p>
+                        <p class="keyboard-shortcuts__list__text">Толщина 5px</p>
+                        <p class="keyboard-shortcuts__list__text">Толщина 6px</p>
                     </div>
                     <div>
                         <p class="keyboard-shortcuts__list__text headline">Клавиши</p>
@@ -94,6 +102,8 @@
                         <p class="keyboard-shortcuts__list__text key">2</p>
                         <p class="keyboard-shortcuts__list__text key">3</p>
                         <p class="keyboard-shortcuts__list__text key">4</p>
+                        <p class="keyboard-shortcuts__list__text key">5</p>
+                        <p class="keyboard-shortcuts__list__text key">6</p>
                     </div>
                 </div>
                 <div class="keyboard-shortcuts__button" title="Keyboard shortcuts"></div>
@@ -134,12 +144,12 @@
                 <div class="settings__resolution">
                     <button class="button collapsible">Разрешение холста</button>
                     <div class="content">
-                        <div id="res32" class="settings__resolution__item">32x32</div>
+                        <div id="res32" class="settings__resolution__item selected">32x32</div>
                         <div id="res64" class="settings__resolution__item">64x64</div>
                         <div id="res128" class="settings__resolution__item">128x128</div>
                         <div id="res256" class="settings__resolution__item">256x256</div>
                         <div id="res512" class="settings__resolution__item">512x512</div>
-                        <div id="res1024" class="settings__resolution__item selected">1024x1024</div>
+                        <div id="res1024" class="settings__resolution__item">1024x1024</div>
                     </div>
                 </div>
                 <div class="settings__separator"></div>
@@ -155,21 +165,28 @@
                     <span class="description">Импорт:</span>
                     <div class="settings__import__buttons">
                         <a class="button import-button">
-                            <input type="file" onchange="previewImage(this);"></a>
-
+                            <input type="file" onchange="previewImage(this);">
+                        </a>
                         <a class="import-button">
                             <label>Высота:</label>
-                            <input class="import-input" id="height" type="number"  min="32" max="1024" value="1024">
+                            <input class="import-input" id="height" type="number"  min="32" max="1024" value="32">
                         </a>
                         <a class="import-button">
                             <label>Ширина:</label>
-                            <input class="import-input" id="width" type="number" min="32" max="1024" value="1024">
+                            <input class="import-input" id="width" type="number" min="32" max="1024" value="32">
                         </a>
-                        <a class="button import-button" onclick="setImage();">Вставить</a>
+                            <a class="button import-button" onclick="setImage();">Вставить</a>
                         </a>
                         <img id="preview" class="img-canvas-preview">
                     </div>
                 </div>
+            </div>
+            <div class="settings desc-actions">
+                    <span class="description desc-actions">Действия:</span>
+                    <div class="settings__separator margin"></div>
+                        <button type="button" class="button settings-button" id="clear">Очистить</button>  
+                        <button class="button settings-button" id="undo">Отменить</button>
+                        <button class="button settings-button" id="redo">Восстановить</button>
             </div>
             <div id="framesInfo" class="frames-info">Координаты</div>
         </div>
